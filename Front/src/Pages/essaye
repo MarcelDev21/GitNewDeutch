@@ -1,0 +1,284 @@
+import React, {useState, useEffect} from 'react';
+import Presentation from './Presentation';
+import Footer from './Footer';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import {Row,Col,Container,Carousel} from 'react-bootstrap'
+import Aos from 'aos';
+import detail from '../images/detail.png'
+import Caracteristique from '../images/caracteristique.png'
+import option from '../images/option.png'
+import { FaBeer , FaStar, FaStarHalf} from 'react-icons/fa';
+
+import WhatsAppWidget from 'react-whatsapp-widget'
+import 'react-whatsapp-widget/dist/index.css'
+
+import 'aos/dist/aos.css';
+import ReactWhatsapp from 'react-whatsapp';
+
+const VoitureLuxeDetail = () => {
+    const {id} = useParams()
+    const [data, setData] = useState([])
+    const [accessoires, setAccessoire] = useState({mesAccessoires:[]})
+    const [monImageCaroussel, setImageCaroussel] = useState({imageRecupere:[]})
+    const [imageGet1, setImageGet1] = useState("")
+    const [imageGet2, setImageGet2] = useState("")
+    const [imageGet3, setImageGet3] = useState("")
+    const [imageGet4, setImageGet4] = useState("")
+    const [imageGet5, setImageGet5] = useState("")
+
+    useEffect(() => {
+        Aos.init({duration:3000})
+        verifierImage()
+        getDataById()
+        getVoitureEtAccessoire()
+        afficheImageCaroussel()
+    }, []);
+
+    const getDataById = async () => {
+        const urlGetDataById = `http://localhost:5000/login/RechercheDetailVoiture/${id}`
+        await axios.get(urlGetDataById).then((res)=> {setData([res.data.detailVoiture])})
+    }
+
+
+
+    const getVoitureEtAccessoire = async() => {
+        console.log(id)
+        const urlGetVoiture = `http://localhost:5000/login/informationAccesoireVoiture/${id}`
+        await axios.get(urlGetVoiture)
+        .then((res)=> {
+            //console.log(res.data.getIdAccessoire);
+            setAccessoire({mesAccessoires:[res.data.getIdAccessoire]})
+            //console.log(accessoires.mesAccessoires)
+        })
+    }
+
+    const afficheImageCaroussel = async() => {
+        const urlImageCaroussel = `http://localhost:5000/login/recupereImagePourCarousel/${id}`
+        await axios.get(urlImageCaroussel).then((res)=> {
+            //console.log(res.data.recupereimage);
+                    // console.log(res.data.recupereimage.autreImage[0].image1.url)
+                        /*if(!res.data.recupereimage.autreImage[0].image1.url) {
+                            console.log("nous n avons pas d image")
+                        }*/
+            setImageGet1(res.data.recupereimage.autreImage[0].image1.url)
+            setImageGet2(res.data.recupereimage.autreImage[0].image2.url)
+            setImageGet3(res.data.recupereimage.autreImage[0].image3.url)
+            setImageGet4(res.data.recupereimage.autreImage[0].image4.url)
+            setImageGet5(res.data.recupereimage.autreImage[0].image5.url)
+            //console.log(imageGet1)
+            setImageCaroussel({imageRecupere:[res.data.valuefinal]})
+            //console.log("test")
+            //console.log(monImageCaroussel.imageRecupere)
+            //console.log(imageGet1)
+        })
+        }
+
+
+        const verifierImage = () => {
+            if(!imageGet1 || imageGet1 === null){
+                console.log("cette image n existe pas")
+            }else{
+                return(
+                    <div>
+                        {}
+                    </div>
+                )
+            }
+        }
+
+
+    return (
+        <div>
+        {/* {console.log(accessoires.mesAccessoires)} */}
+            <Presentation/><br/>
+              {accessoires.mesAccessoires.map((res)=>{
+                  return(
+                      <Container>
+
+            <div className="headerServices">
+                <h1>Detail de la Voiture</h1>
+                <p>Ces details vous montrent les principales caractéristiques de la voiture</p>
+             </div><br/>
+                        <Row data-aos="fade-up">
+                                {/* <Col sm={6}>
+                                     <img src={res.image.url} alt="monImage" className="imageDetailVoiture"/>
+                                </Col> */}
+
+
+
+            <Col data-aos="fade-up" sm={6}>
+                <Carousel>
+                    <Carousel.Item interval={3000}>
+                       <div className="blocImages">
+                        <img
+                            className="mesImagesCaroussel"
+                            src={res.image.url}
+                            alt="First slide"
+                            />
+                        </div>
+                        <Carousel.Caption>
+                        <h3>{res.marque} {res.model}</h3>
+                        <p>Faites confiance a DeutshAutomoto</p>
+                        </Carousel.Caption>
+                        </Carousel.Item>
+
+                        <Carousel.Item interval={3000}>
+                      <div className="blocImages">
+                        <img
+                            className="mesImagesCaroussel"
+                            src={imageGet2}
+                            alt="Second slide"
+                            />
+                     </div>
+
+                        <Carousel.Caption>
+                        <h3>{res.marque} {res.model}</h3>
+                        <p>Faites confiance a DeutshAutomoto</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+
+                    <Carousel.Item interval={3000}>
+                        <img
+                        className="mesImagesCaroussel"
+                        src={imageGet1}
+                        alt="Third slide"
+                        />
+
+                        <Carousel.Caption>
+                        <h3>{res.marque} {res.model}</h3>
+                        <p>Faites confiance a DeutshAutomoto</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+
+                    
+                    {/* ok */}
+                    <Carousel.Item interval={3000}>
+                        <img
+                        className="mesImagesCaroussel"
+                        src={imageGet3}
+                        alt="Third slide"
+                        />
+
+                        <Carousel.Caption>
+                        <h3>{res.marque} {res.model}</h3>
+                        <p>Faites confiance a DeutshAutomoto</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+
+
+                    <Carousel.Item interval={3000}>
+                        <img
+                        className="mesImagesCaroussel"
+                        src={imageGet4}
+                        alt="Third slide"
+                        />
+
+                        <Carousel.Caption>
+                        <h3>{res.marque} {res.model}</h3>
+                        <p>Faites confiance a DeutshAutomoto</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+
+
+                    <Carousel.Item interval={3000}>
+                        <img
+                        className="mesImagesCaroussel"
+                        src={imageGet5}
+                        alt="Third slide"
+                        />
+
+                        <Carousel.Caption>
+                        <h3>{res.marque} {res.model}</h3>
+                        <p>Faites confiance a DeutshAutomoto</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                </Carousel>
+                </Col>
+
+                                <Col sm={6}>
+                                    <h3> <span className="titreMarque"> Marque:</span>  {res.marque} {res.model} </h3>
+
+                                        <div className="mesFabsPositions">
+                                            <FaStar className="fabe"/>
+                                            <FaStar className="fabe"/>
+                                            <FaStar className="fabe"/>
+                                            <FaStar className="fabe"/>
+                                            <FaStar className="fabe"/>
+                                        </div><br/>
+
+                                     <div className="mesImagesDiv3">
+                                        <h3 > <span className="etatPrincipal"> état de la voiture: </span>{res.etat} </h3>
+                                        <h3 ><span className="etatPrincipal">  Qualité de la voiture:</span>{res.qualitéVoiture} </h3>
+                                        <h3 > <span className="etatPrincipal"> Prix de la voiture:</span>{res.prix} Euro</h3>
+                                     </div>
+
+                                     <hr style={{width:300, textAlign:'center',marginLeft:20, height:5, color:"lime"}}/>
+                                    <br/>
+                                    <a className="ContacterDeutsh" >Contacter DeutshAutomoto:+34 89763579736</a>
+                                    <a className="bout" onClick={()=> {afficheImageCaroussel()}}>bouton</a>
+                                </Col>
+                        </Row><br/>
+                         <Row data-aos="fade-up">
+                         <div  className="headerServices">
+                            <h1>Accessoire de la Voiture</h1>
+                            <p>Nous présentons les principaux kits et accessoires de la voiture</p>
+                        </div><br/>
+
+                             <Col sm={4} >
+                                <div className="mettre_card">
+                                    <h1> Caractère</h1>
+                                    <p> <span className="mesCriteres"> Marque: </span> {res.marque}</p> 
+                                    <p> <span className="mesCriteres">Model:</span>  {res.model}</p> 
+                                    <p> <span className="mesCriteres"> Portières:</span> {res.portières}</p> 
+                                    <p> <span className="mesCriteres">Prix:</span>  {res.prix} Euro</p> 
+                                    <p> <span className="mesCriteres"> rapports: </span>{res.rapports}</p> 
+                                    <p> <span className="mesCriteres">typeVehicule: </span>{res.typeVehicule}</p> 
+                                    <p> <span className="mesCriteres">etat de la voiture: </span>{res.etat}</p>  
+                                    <p> <span className="mesCriteres">lieu de la voiture: </span>{res.lieuDuVehicule}</p>  
+                                </div>   
+                             </Col>
+                             <Col sm={4} >
+                               <div className="mettre_card">
+                                    <h1> Caractère</h1>
+                                    <p> <span className="mesCriteres">couleur:</span>  {res.couleur}</p> 
+                                    <p> <span className="mesCriteres">etat: </span>{res.etat}</p> 
+                                    <p> <span className="mesCriteres">habitacle: </span>{res.habitacle}</p> 
+                                    <p> <span className="mesCriteres"> immatriculation:  </span>{res.immatriculation}</p> 
+                                    <p> <span className="mesCriteres"> indice: </span>{res.indice}</p> 
+                                    {/* <p> <span className="mesCriteres">portières: </span>{res.portières}</p> 
+                                    <p> <span className="mesCriteres">portières: </span>{res.portières}</p>  */}
+                                    <p> <span className="mesCriteres">description: </span>{res.description}</p> 
+                               </div>
+                             </Col>
+                             <Col sm={4} className="mettre_card">
+                             <h1> Accessoires</h1>
+                             {res.AccessoireSchema.map((res)=> {
+                                 return(
+                                 <div>
+                                     <p> 
+                                        <span>{res.ABS}</span><br/>
+                                        <span>{res.aireConditionné}</span><br/>
+                                        <span>{res.aireDeStationnement}</span><br/>
+                                        <span>{res.bluetooth}</span><br/>
+                                        <span>{res.jantes}</span><br/>
+                                        <span>{res.phares}</span><br/>
+                                        <span>{res.radio}</span><br/>
+                                        <span>{res.siegeChauffant}</span><br/>
+                                        <span>{res.systemeNavigation}</span><br/>
+                                        <span>{res.tempomat}</span><br/>
+                                        <span>{res.toitOuvrant}</span><br/>
+                                        <span>{res.visiteTechnique}</span><br/>
+                                     </p>
+                                 </div>)})}
+                             </Col>
+                         </Row>
+                      </Container>
+                  )
+              })}
+            <Footer/>
+        </div>
+    );
+};
+
+export default VoitureLuxeDetail;

@@ -1,0 +1,171 @@
+import React, {useState, useEffect} from 'react';
+import Presentation from './Presentation';
+import Footer from './Footer';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import {Row,Col,Container} from 'react-bootstrap'
+import Aos from 'aos';
+import detail from '../images/detail.png'
+import Caracteristique from '../images/caracteristique.png'
+import option from '../images/option.png'
+
+import WhatsAppWidget from 'react-whatsapp-widget'
+import 'react-whatsapp-widget/dist/index.css'
+
+import ReactWhatsapp from 'react-whatsapp';
+
+const VoitureLuxeDetail = () => {
+    const {id} = useParams()
+    const [data, setData] = useState([])
+    const [accessoires, setAccessoire] = useState({mesAccessoires:[]})
+
+    useEffect(() => {
+        Aos.init({duration:3000})
+        getDataById()
+        getVoitureEtAccessoire()
+    }, []);
+
+    const getDataById = async () => {
+        const urlGetDataById = `http://localhost:5000/login/RechercheDetailVoiture/${id}`
+        await axios.get(urlGetDataById).then((res)=> {setData([res.data.detailVoiture])})
+    }
+    const ContacterDeutsh = () => {
+      return(
+        <ReactWhatsapp number="+237-695026466" message="Hello World!!!" />
+      )
+    }
+
+    const getVoitureEtAccessoire = async() => {
+        const urlGetVoiture = `http://localhost:5000/login/informationAccesoireVoiture/${id}`
+        await axios.get(urlGetVoiture, {headers:{"token": window.localStorage.token}})
+        .then((res)=> {
+            //console.log(res.data.getIdAccessoire);
+            setAccessoire({mesAccessoires: [res.data.getIdAccessoire.AccessoireSchema]})
+            console.log(accessoires.mesAccessoires)
+        })
+    }
+    return (
+        <div>
+            {/* {console.log(data)} */}
+            <Presentation/>
+            <h3 className="textVoitureDetail"> VoitureLuxeDetail</h3>
+            <p className="detailVoiture">Observez les details de votre voiture</p>
+                {data.map((detailVoiture) => {
+                    return(
+                        <Container>
+                          <div className="detailVoitures">
+                              <h1> {id} </h1>
+                                <img src={detailVoiture.image.url} alt="monImage" className="imageDetailVoiture"/>
+
+                                <div className="officialVoitureLuxe" data-os="fade-up">
+                                   <div style={{marginLeft:20}}>
+                                       {/* <p className="marque">{detailVoiture.marque} <br/>
+                                       <span> etat: {detailVoiture.etat}</span><br/>
+                                       <span> habitacle: {detailVoiture.habitacle}</span><br/>
+                                       <span> immatriculation: {detailVoiture.immatriculation}</span><br/>
+                                       <span> indice: {detailVoiture.indice}</span><br/>
+                                       <span> model: {detailVoiture.model}</span><br/>
+                                       <span> moteur: {detailVoiture.moteur}</span><br/>
+                                       <span> portières: {detailVoiture.portières}</span><br/>
+                                       <span> puissance: {detailVoiture.puissance}</span><br/>
+                                       <span> qualitéVoiture: {detailVoiture.qualitéVoiture}</span><br/>
+                                       <span> rapports: {detailVoiture.rapports}</span><br/>
+                                       <span> typeVehicule: {detailVoiture.typeVehicule}</span><br/>
+                                       </p> */}
+                                       <ul className="monUl">
+                                            <li className="marque"> {detailVoiture.marque} </li>
+                                       </ul>
+                                       <p> mettre fab</p>
+                                       <ul className="monUl">
+                                            <li> Marque: <span> {detailVoiture.marque} </span> </li>
+                                            <li> Marwue: <span> {detailVoiture.marque} </span>  </li>
+                                       </ul>
+
+                                            <div className="footerMini">
+                                              <a className="ContacterDeutsh" onClick={() => {ContacterDeutsh()}}>Contacter Deutsh Automo</a>
+                                            </div>
+                                   </div>
+                                   <div style={{marginLeft:10}}>
+                                   <p className="prix">{detailVoiture.prix} Euro</p>
+                                   </div>
+                                </div>
+                          </div>
+                        </Container>
+                    )
+                })}
+
+
+
+                <div data-os="fade-up">
+                    <div style={{marginTop:20}}>
+                         <p className="textVoitureDetail"> Detail de la Voiture</p>
+                         <p className="detailVoiture">Obtenez plus de detail de votre voiture</p>
+                    </div>
+                   
+
+
+                   
+                       {data.map((maVoiture) => {
+                           return(
+                               <Container>
+                                   
+                                    <Row>
+                                        <Col sm={4} className="myCard">
+                                            <div className="myCard">
+                                                <div className="myNewImages">
+                                                        <img src={detail} className="caracImage"/>
+                                                </div>
+                                                    <h3 className="detailTextCaisse">Detail de la Voiture</h3>
+                                                <ul>
+                                                            <li> <span className="etatVoiture"> Etat:</span>  {maVoiture.etat}  </li>
+                                                            <li> <span className="etatVoiture"> Couleur:</span>  {maVoiture.couleur}  </li>
+                                                            <li> <span className="etatVoiture"> Immatriculation:</span> {maVoiture.immatriculation}  </li>
+                                                            <li> <span className="etatVoiture"> Indice:</span> {maVoiture.indice}  </li>
+                                                            <li> <span className="etatVoiture"> Mode:</span> {maVoiture.model}  </li>
+                                                </ul>
+                                            </div>
+                                        </Col>
+
+                                        <Col sm={4} className="myCard">
+                                         <div className="myCard">
+                                         <div className="myNewImages">
+                                                 <img src={Caracteristique} className="caracImage"/>
+                                           </div>
+                                           <h3 className="detailTextCaisse">Caracteristiques</h3>
+                                            <ul>
+                                                <li> <span className="etatVoiture"> Portières:</span>  {maVoiture.portières}  </li>
+                                                <li> <span className="etatVoiture"> Puissance:</span>  {maVoiture.puissance}  </li>
+                                                <li> <span className="etatVoiture"> Rapports:</span>  {maVoiture.rapports}  </li>
+                                                <li> <span className="etatVoiture"> Type Vehicul:</span>  {maVoiture.typeVehicule}  </li>
+                                                <li> <span className="etatVoiture"> Marque:</span>  {maVoiture.marque}  </li>
+                                            </ul>
+                                         </div>
+                                        </Col>
+{/* 
+                                        <Col sm={4} className="myCard">
+                                         <div className="myCard">
+                                            <div className="myNewImages">
+                                                    <img src={option} className="caracImage"/>
+                                            </div>
+                                            <h3 className="detailTextCaisse">Option de la Voiture</h3>
+                                                <p> {maVoiture.marque}  </p>
+                                         </div>
+                                        </Col> */}
+
+
+                                    </Row>
+
+                                   
+                            </Container>
+                           )
+                       })}
+                       <h1> testons</h1>
+                   
+                </div>
+
+            <Footer/>
+        </div>
+    );
+};
+
+export default VoitureLuxeDetail;

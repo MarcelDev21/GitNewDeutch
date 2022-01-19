@@ -1,0 +1,526 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+*{
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Roboto Condensed', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.app{
+  background-color: rgb(244, 244, 249);
+}
+.headerNavigation{
+  background-color: aliceblue;
+  padding: 10px;
+}
+.imageVoiture{
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 80px; 
+}
+.headerDeutchAuto{
+  color: darkgreen;
+  margin-left: 20px;
+  font-size: 28px;
+  margin-top: 15px;
+}
+.mesLinks{
+  margin-left: 70px;
+  text-decoration-line: underline;
+  font-size: 20px;
+  color: #444
+}
+.accueil{
+  text-decoration-line: underline;
+  font-size: 20px;
+  color: #444
+}
+.accueil:hover{
+  background-color: darkgreen;
+  padding: 5px;
+  position: relative;
+  transform: translateY(2px);
+  transition: 0.2s;
+  border-radius: 10px;
+  color: white;
+  transition: 0.8s ease;
+  text-decoration: none;
+}
+.mesLinks:hover{
+  background-color: darkgreen;
+  padding: 5px;
+  position: relative;
+  transform: translateY(2px);
+  border-radius: 10px;
+  color: white;
+  transition: 0.8s ease;
+  text-decoration: none;
+}
+.headerLeft{
+  margin-left: 50%;
+  margin-top: 20px;
+}
+.signIn{
+  padding: 10px;
+  background-color: blueviolet;
+  border-radius: 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  margin-left: -80px;
+}
+.signIn:hover{
+  background-color: darkgreen;
+  color: white;
+  transition: 1s ease;
+}
+.carBack{
+  object-fit: cover;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  margin-top: 15px;
+}
+.MaPresentation{
+  background-color: #444;
+}
+.divPresentation{
+  margin-left: 10%;
+  margin-top: 8%;
+}
+.presentationDeutsh{
+  color: darkgreen;
+  font-size: 28px;
+}
+.voir_Voitures{
+  text-decoration: none;
+  padding: 10px;
+  background-color: blueviolet;
+  border-radius: 0.5rem;
+  color: rgba(12, 11, 11, 0.856)
+}
+.voir_Voitures:hover{
+  background-color: darkgreen;
+  color: white;
+  transition: 1s ease;
+  cursor: pointer;
+}
+.headerServices{
+  text-align: center;
+  margin-top: 20px;
+}
+.imageVente{
+  object-fit: cover;
+  width: 400px;
+  height: 200px;
+  border-radius: 0.5rem;
+}
+.originalDivService{
+ /* margin-left: 15%; */
+}
+.GrandDivServices{
+  padding: 10px;
+  gap: 1rem;
+  box-shadow: 10px 10px 42px rgba(0,0,0,0.1);
+  border-radius: 0.5rem;
+}
+.GrandDivServices:hover{
+  transform: translateY(10px);
+  transition: 0.3s ease-in;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+.venteVoiture{
+  text-align: center;
+  color: darkgreen;
+  font-size: 25px;
+}
+.paragrapheVoiture{
+  text-align: justify;
+}
+.voirVoitures{
+  margin-left: 30%;
+  padding: 10px;
+  background-color: blueviolet;
+  border-radius: 0.5rem;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+.voirVoitures:hover{
+  background-color: darkgreen;
+  color: white;
+  transition: 1s ease;
+}
+.imageApropos{
+  object-fit: cover;
+  width: 400px;
+  height: 250px;
+  border-radius: 0.5rem;
+}
+.voitureAbout{
+  padding: 10px;
+  background-color: blueviolet;
+  border-radius: 0.5rem;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+.voitureAbout:hover{
+  background-color: darkgreen;
+  color: white;
+  transition: 1s ease;
+}
+.A_Propos{
+  color: darkgreen;
+  font-size: 25px;
+}
+.paragrapheAPropos{
+  text-align: justify;
+}
+.imageTemoignage{
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-left: 35%;
+}
+.auteurTemoignage{
+  font-weight: bold;
+  font-size: 16px;
+  margin-left: 30%;
+}
+.paragrapheTemoignage{
+  text-align: justify;
+  font-style: italic;
+}
+.temoignage{
+  padding: 10px;
+  border-radius: 0.5rem;
+  box-shadow: 1px 4px 42px rgba(0,0,0,0.1);
+}
+.temoignage:hover{
+  transform: translateY(10px);
+  transition: 1s ease;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+.Footer{
+  margin-top: 30px;
+  background-color: aliceblue;
+  height: 40%;
+}
+.login{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.LoginConnect{
+  padding: 10px;
+  background-color:blueviolet;
+  text-decoration: none;
+  color: black;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.LoginConnect:hover{
+  background-color: darkgreen;
+  transition: 1s ease;
+  color: white;
+}
+.divBtnLogin{
+  display: flex;
+  justify-content: center;
+}
+.ajouterVoiture{
+  text-decoration: none;
+  padding: 5px;
+  background-color: blueviolet;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-left: 3px;
+}
+.ajouterVoiture:hover{
+  background-color: darkgreen;
+  color: white;
+  transition: 0.2s ease;
+}
+.AjoutVoitureDiv{
+  margin-top: 25px;
+  margin-left: 10px;
+}
+.imageTelecharger{
+  object-fit: cover;
+  width: 30%;
+  height: 30%;
+}
+.divVoiture{
+  margin-top:20px;
+  padding:5px;
+  box-shadow:1px 4px 41px rgba(0,0,0,0.1);
+  border-radius:0.5rem
+}
+.imgVoiture{
+  object-fit:cover;
+  width:100%;
+  height:200px;
+}
+.PlusDetail{
+  text-decoration:none;
+  padding:5px;
+  background-color:blueviolet;
+  color:white;
+  border-radius:0.5rem;
+  cursor:pointer;
+}
+.marquePrix{
+  color:darkgreen;
+}
+.imageDetail{
+  object-fit:cover;
+  width:400px;
+  height:400px;
+}
+.caracteristque{
+  font-size: 20px;
+  color:darkgreen;
+}
+.monCol{
+display:flex;
+justify-content:space-around;
+margin-top:50px;
+margin-left:30px;
+}
+.SupprimerVoiture{
+  text-decoration:none;
+  padding:10px;
+  background-color: blueviolet;
+  border-radius:0.5rem;
+  color: white;
+  cursor:pointer;
+  margin-left: 5px;
+}
+.SupprimerVoiture:hover{
+  background-color: darkgreen;
+  transition: 0.5s ease;
+}
+.imageLuxe{
+  object-fit:cover;
+  width:100%;
+  height:250px;
+  padding: 5px;
+  border-radius: 0.5rem;
+}
+.divMesVoitures{
+  padding:5px;
+  box-shadow:1px 4px 42px rgba(0,0,0,0.1);
+  border-radius:0.5rem;
+  margin-top:10px;
+}
+.voirPlus{
+  text-decoration:none;
+  padding:10px;
+  cursor:pointer;
+  background-color:blueviolet;
+  border-radius:0.5rem;
+  color:white;
+}
+.voirPlus:hover{
+  background-color:darkgreen;
+  transition:1s ease;
+}
+.imageDetailVoiture{
+  object-fit: cover;
+  width: 300px;
+  height: 200px;
+  border-radius: 0.5rem;
+}
+.textVoitureDetail{
+  text-align: center;
+  font-size: 25px;
+  color: darkgreen;
+  margin-top: 10px;
+}
+.detailVoiture{
+  text-align: center;
+  font-size: 20px;
+}
+.monUl{
+  list-style: none;
+}
+.marque{
+  font-size: 20px;
+  color: darkgreen;
+  font-weight: bold;
+}
+.prix{
+  font-size: 20px;
+  padding: 5px;
+  background-color: blueviolet;
+  color: white;
+  border-radius: 0.5rem;
+}
+.footerMini{
+  display: flex;
+  justify-content: center;
+}
+.ContacterDeutsh{
+  padding: 7px;
+  background-color: blueviolet;
+  border-radius: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  margin-left: 10px;
+}
+.ContacterDeutsh:hover{
+  background-color: darkgreen;
+  transition: 1s ease;
+  cursor: pointer;
+}
+.officialVoitureLuxe{
+  display: flex;
+  justify-content: center;
+}
+.detailVoitures{
+  display: flex;
+  justify-content: center;
+  box-shadow: 1px 4px 41px rgba(0, 0, 0, 0.1);
+  margin-left: 40px;
+  padding: 10px;
+}
+.myCard{
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 1px 4px 41px rgba(0, 0, 0, 0.1);
+}
+.caracImage{
+  width: 70px;
+  height: 70px;
+  border-radius: 30px;
+}
+.myNewImages{
+  display: flex;
+  justify-content: center;
+}
+.detailTextCaisse{
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
+  font-style: italic;
+}
+.myCard:hover{
+  transform: translateY(10px);
+  transition: 0.3s ease-in;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+.etatVoiture{
+  color: darkgreen;
+}
+.Actualiser{
+  padding: 10px;
+  background-color: blueviolet;
+  color: white;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.Actualiser:hover{
+  background-color: darkgreen;
+  transition: 0.5s ease;
+}
+.modifierVoiture{
+  padding: 10px;
+  background-color: blueviolet;
+  color: white;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.modifierVoiture:hover{
+  background-color: darkgreen;
+  transition: 0.5s ease;
+}
+.mesBoutonsModifications{
+  margin-top: 25px;
+  gap: 5rem;
+}
+.maVoitureLuxe{
+  width: 30%;
+  height: 30px;
+  border-radius: 0.5rem;
+  border: none;
+  margin-left: 5px;
+  margin-top: 5px;
+  padding: 10px;
+}
+.enregistrerMarque{
+  margin-left: 2%;
+  margin-top: 10px;
+}
+.fabe{
+  color: darkgreen;
+  width: 25px;
+}
+.mesEtoiles{
+  display: flex;
+  justify-content: center;
+}
+.mesCriteres{
+  color: darkgreen;
+  font-size: 18px;
+}
+.mesTitres{
+  color: darkgreen;
+  font-size: 18px;
+}
+.mesCriteres{
+  color: darkgreen;
+  font-size: 18px;
+}
+.mettre_card{
+  padding: 10px;
+  box-shadow: 1px 4px 41px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  gap: 8rem;
+}
+.blocImages{
+ 
+}
+.mesImagesCaroussel{
+  object-fit: cover;
+  width: 100%;
+  height: 400px;
+  border-radius: 0.5rem;
+}
+.blocImages{
+  width: 100%;
+  height: 60%;
+}
+.titreMarque{
+  font-size: 50px;
+  color: darkgreen;
+}
+.etatPrincipal{
+  font-size: 20px;
+  color: darkgreen;
+}
+.mesFabsPositions{
+ margin-left: 20%;
+} 
+.mesImagesDiv3{
+  margin-left: 5%;
+}
+.inputContactDeutch{
+  width: 70%;
+  border: 2px solid;
+  border-radius: 5px;
+  padding: 5px;
+}
+.mesInfos{
+  font-family: 'Roboto Condensed', sans-serif;
+}
